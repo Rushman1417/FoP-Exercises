@@ -26,26 +26,10 @@ Maintain a well-organized academic reference for Semester 2
 - **Semester:** 2  
 - **Specialization:** AI & Data Science (AI & DS)  
 - **Development Environment:** Visual Studio (or any C compiler)
-## 🎯 Concepts Covered:
-- Variables and Data Types
-- Arithmetic & Logical Operators
-- Conditional Statements (if, else, switch)
-- Looping Constructs (for, while, do-while)
-- Functions and Modular Programming
-- Arrays and Basic Matrix Operations
-- Mathematical Computations (Prime, Factorial, GCD, etc.)
 
 ---
 
 # ⚙️ Compilation & Execution Instructions
-## 🏫 Course Information:
-- Course: Foundations of Programming (FOP)
-- University: MIT World Peace University (MIT-WPU)
-- Semester: 2
-- Specialization: AI & Data Science (AI & DS)
-- Language: C
-- Development Environment: Visual Studio (or any standard C compiler)
-
 ---
 
 Each `.c` file is independent and can be compiled separately.
