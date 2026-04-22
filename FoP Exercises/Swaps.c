@@ -1,38 +1,33 @@
-
 #include <stdio.h>
 
-// Function for Call by Value
-void swapByValue(int a, int b) {
-    int temp = a;
+//without pointers
+void swapValue(int a, int b) {
+    int temp;
+    temp = a;
     a = b;
     b = temp;
-    printf("Inside swapByValue: a = %d, b = %d\n", a, b);
+    printf("Inside swapValue (without pointers): a = %d, b = %d\n", a, b);
 }
 
-// Function for Call by Reference
-void swapByReference(int *a, int *b) {
-    int temp = *a;
+//with pointers
+void swapPointer(int *a, int *b) {
+    int temp;
+    temp = *a;
     *a = *b;
     *b = temp;
 }
 
 int main() {
-    int x, y;
+    int x = 10, y = 20;
 
-    printf("Enter two numbers: ");
-    scanf("%d %d", &x, &y);
+    printf("Before swap:\n");
+    printf("x = %d, y = %d\n", x, y);
 
-    printf("\nOriginal values: x = %d, y = %d\n", x, y);
+    swapValue(x, y);
+    printf("After swapValue (in main): x = %d, y = %d\n", x, y);
 
-    // 1. Swapping without pointers (Call by Value)
-    printf("\n--- Call by Value --- \n");
-    swapByValue(x, y);
-    printf("After swapByValue in main: x = %d, y = %d (No change!)\n", x, y);
-
-    // 2. Swapping with pointers (Call by Reference)
-    printf("\n--- Call by Reference ---\n");
-    swapByReference(&x, &y);
-    printf("After swapByReference in main: x = %d, y = %d (Values changed!)\n", x, y);
+    swapPointer(&x, &y);
+    printf("After swapPointer (in main): x = %d, y = %d\n", x, y);
 
     return 0;
 }

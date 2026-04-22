@@ -7,43 +7,38 @@
 
 #include <stdio.h>
 
-int main()
-{
-    int a, b, i, gcd, temp;
-    int smallestDivisor = 0;
+int main() {
+    int num1, num2, i, min;
+    int smallestDivisor = 0, gcd = 1;
 
-    printf("Enter first number: ");
-    scanf("%d", &a);
+    printf("Enter two positive integers: ");
+    scanf("%d %d", &num1, &num2);
 
-    printf("Enter second number: ");
-    scanf("%d", &b);
+    // Find smaller number
+    if (num1 < num2)
+        min = num1;
+    else
+        min = num2;
 
-    // Finding smallest common divisor (other than 1)
-    for (i = 2; i <= a && i <= b; i++)
-    {
-        if (a % i == 0 && b % i == 0)
-        {
+    for (i = 2; i <= min; i++) {
+        if (num1 % i == 0 && num2 % i == 0) {
             smallestDivisor = i;
             break;
         }
     }
 
     if (smallestDivisor != 0)
-        printf("\nSmallest Common Divisor: %d", smallestDivisor);
+        printf("Smallest common divisor (other than 1): %d\n", smallestDivisor);
     else
-        printf("\nNo common divisor other than 1");
+        printf("No common divisor other than 1 exists.\n");
 
-    // Euclidean Algorithm for GCD
-    int x = a, y = b;
-    while (y != 0)
-    {
-        temp = y;
-        y = x % y;
-        x = temp;
+    for (i = 1; i <= min; i++) {
+        if (num1 % i == 0 && num2 % i == 0) {
+            gcd = i;
+        }
     }
-    gcd = x;
 
-    printf("\nGreatest Common Divisor (GCD): %d", gcd);
+    printf("Greatest Common Divisor (GCD): %d\n", gcd);
 
     return 0;
 }

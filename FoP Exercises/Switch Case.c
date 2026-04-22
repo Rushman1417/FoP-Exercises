@@ -6,95 +6,73 @@
 - Description: This program performs various operations on a given number based on user's choice.
 */
 
-//Libraries Included:
 #include <stdio.h>
 #include <math.h>
 
-//Main:
 int main()
 {
-    int n, choice, i, isPrime = 1;
-    long long fact = 1;
+    int num, i;
+    long long factorial = 1;
 
     printf("Enter a number: ");
-    scanf_s("%d", &n);
-
-    //Display Menu
-    printf("\nMenu:");
-    printf("\n1. Square Root");
-    printf("\n2. Square");
-    printf("\n3. Cube");
-    printf("\n4. Check Prime");
-    printf("\n5. Factorial");
-    printf("\n6. Prime Factors");
-    printf("\nEnter your choice: ");
-    scanf_s("%d", &choice);
-
-
-    //Switch Case
-    switch (choice)
+    scanf("%d", &num);
+    if(num >= 0)
+        printf("Square Root = %.2f\n", sqrt(num));
+    else
+        printf("Square Root = Not defined for negative numbers\n");
+    printf("Square = %d\n", num * num);
+    printf("Cube = %d\n", num * num * num);
+    if(num <= 1)
     {
-    case 1:
-        if (n < 0)
-            printf("Square root of negative number is not defined.");
-        else
-            printf("Square Root = %.2f", sqrt(n));
-        break;
-
-    case 2:
-        printf("Square = %d", n * n);
-        break;
-
-    case 3:
-        printf("Cube = %d", n * n * n);
-        break;
-
-    case 4:
-        if (n <= 1)
-            isPrime = 0;
-
-        for (i = 2; i <= n / 2; i++)
+        printf("Prime: Not a Prime number\n");
+    }
+    else
+    {
+        int isPrime = 1;
+        for(i = 2; i <= num/2; i++)
         {
-            if (n % i == 0)
+            if(num % i == 0)
             {
                 isPrime = 0;
                 break;
             }
         }
 
-        if (isPrime)
-            printf("%d is a Prime Number", n);
+        if(isPrime)
+            printf("Prime: It is a Prime number\n");
         else
-            printf("%d is not a Prime Number", n);
-        break;
-
-    case 5:
-        if (n < 0)
+            printf("Prime: Not a Prime number\n");
+    }
+    if(num < 0)
+    {
+        printf("Factorial: Not defined for negative numbers\n");
+    }
+    else
+    {
+        for(i = 1; i <= num; i++)
         {
-            printf("Factorial of negative number is not defined.");
+            factorial *= i;
         }
-        else
-        {
-            for (i = 1; i <= n; i++)
-                fact *= i;
-            printf("Factorial = %lld", fact);
-        }
-        break;
+        printf("Factorial = %lld\n", factorial);
+    }
+    if(num > 1)
+    {
+        int temp = num;
+        printf("Prime Factors: ");
 
-    case 6:
-        printf("Prime Factors of %d are: ", n);
-        for (i = 2; i <= n; i++)
+        for(i = 2; i <= temp; i++)
         {
-            while (n % i == 0)
+            while(temp % i == 0)
             {
                 printf("%d ", i);
-                n /= i;
+                temp /= i;
             }
         }
-        break;
-
-    default:
-        printf("Invalid Choice");
+        printf("\n");
+    }
+    else
+    {
+        printf("Prime Factors: Not applicable\n");
     }
 
     return 0;
