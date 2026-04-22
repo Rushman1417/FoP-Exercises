@@ -2,42 +2,26 @@
 #include <stdlib.h>
 
 int main() {
-    FILE *sourceFile, *destFile;
-    char sourcePath[100], destPath[100];
+    FILE *source, *target;
     char ch;
-
-    // Input file names
-    printf("Enter source file name: ");
-    scanf("%s", sourcePath);
-    printf("Enter destination file name: ");
-    scanf("%s", destPath);
-
-    // Open source file in read mode ("r")
-    sourceFile = fopen(sourcePath, "r");
-    if (sourceFile == NULL) {
-        printf("Error: Could not open source file %s\n", sourcePath);
+    source = fopen("source.txt", "r");
+    if (source == NULL) {
+        printf("Error: Cannot open source file.\n");
         exit(1);
     }
-
-    // Open destination file in write mode ("w")
-    destFile = fopen(destPath, "w");
-    if (destFile == NULL) {
-        fclose(sourceFile); // Clean up before exiting
-        printf("Error: Could not open destination file %s\n", destPath);
+    target = fopen("target.txt", "w");
+    if (target == NULL) {
+        printf("Error: Cannot open target file.\n");
+        fclose(source);
         exit(1);
     }
-
-    // Copying process
-    // fgetc reads one character at a time until End of File (EOF)
-    while ((ch = fgetc(sourceFile)) != EOF) {
-        fputc(ch, destFile);
+    while ((ch = fgetc(source)) != EOF) {
+        fputc(ch, target);
     }
 
     printf("File copied successfully.\n");
-
-    // Close both files to release memory and save changes
-    fclose(sourceFile);
-    fclose(destFile);
+    fclose(source);
+    fclose(target);
 
     return 0;
 }

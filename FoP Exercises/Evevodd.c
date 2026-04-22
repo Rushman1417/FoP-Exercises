@@ -1,36 +1,36 @@
-//Even and odd numbers in a list
-#include <stdio.h>
-int main() {
-    int n, i,ec,oc;
-    ec = 0;
-    oc = 0;
+//
 
-    printf("Enter the number of elements in the list: ");
-    scanf("%d", &n);
+#include <stdio.h>
+
+int main() {
+    int n, i;
     
-    int arr[n];
-    printf("Enter the elements of the list:\n");
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    int arr[n], even[n], odd[n];
+    int e = 0, o = 0;
+
+    printf("Enter %d integers:\n", n);
     for (i = 0; i < n; i++) {
         scanf("%d", &arr[i]);
-    }
-    
-    printf("Even numbers in the list:\n");
-    for (i = 0; i < n; i++) {
+
         if (arr[i] % 2 == 0) {
-            printf("%d ", arr[i]);
-            ec +=1;
+            even[e++] = arr[i];
+        } else {
+            odd[o++] = arr[i];
         }
     }
-    printf("\nCount of even numbers: %d\n", ec);
-    
-    printf("\nOdd numbers in the list:\n");
-    for (i = 0; i < n; i++) {
-        if (arr[i] % 2 != 0) {
-            printf("%d ", arr[i]);
-            oc +=1;
-        }x
+
+    printf("\nEven numbers:\n");
+    for (i = 0; i < e; i++) {
+        printf("%d ", even[i]);
     }
-    printf("\nCount of odd numbers: %d\n", oc);
-    
+
+    printf("\nOdd numbers:\n");
+    for (i = 0; i < o; i++) {
+        printf("%d ", odd[i]);
+    }
+
     return 0;
 }

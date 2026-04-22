@@ -6,49 +6,83 @@
 */
 
 #include <stdio.h>
+#include <math.h>
 
-//Global Variables:
-int user_int1;
-int user_int2;
-int result;
-int user_op;
-
-//Main:
-void main()
-{
-	printf("Enter first no: ");
-	scanf_s_s("%d", &user_int1);
-	printf("Enter second no: ");
-	scanf_s_s("%d", &user_int2);
-	printf("Enter operation to be performed(1 => +, 2 => -, 3 => *, 4 => /, 5 => %): ");
-	scanf_s_s("%d", &user_op);
-	calc_operations(user_int1, user_int2, user_op);
-	printf("The result is: %d", result);
+long long factorial(int n) {
+    long long fact = 1;
+    int i;
+    for (i = 1; i <= n; i++) {
+        fact *= i;
+    }
+    return fact;
 }
 
-int calc_operations(num1, num2, op)
-{
-	switch (op) {
-	case 1:
-		result = num1 + num2;
-		break;
-	case 2:
-		result = num1 - num2;
-		break;
-	case 3:
-		result = num1 * num2;
-		break;
-	case 4:
-		result = num1 / num2;
-		break;
-	case 5:
-		result = num1 % num2;
-		break;
-	default:
-		//Loop back to the main input section and ask the user to enter valid operation
-		printf("Invalid operation. Please try again.\n");
-		main();
-		break;
-	};
-	return result;
+int main() {
+    int choice;
+    double num1, num2, result;
+    int n;
+
+    printf("===== Simple Calculator =====\n");
+    printf("1. Addition\n");
+    printf("2. Subtraction\n");
+    printf("3. Multiplication\n");
+    printf("4. Division\n");
+    printf("5. Power\n");
+    printf("6. Factorial\n");
+    printf("Enter your choice (1-6): ");
+    scanf("%d", &choice);
+
+    switch(choice) {
+
+        case 1:
+            printf("Enter two numbers: ");
+            scanf("%lf %lf", &num1, &num2);
+            result = num1 + num2;
+            printf("Result = %.2lf\n", result);
+            break;
+
+        case 2:
+            printf("Enter two numbers: ");
+            scanf("%lf %lf", &num1, &num2);
+            result = num1 - num2;
+            printf("Result = %.2lf\n", result);
+            break;
+
+        case 3:
+            printf("Enter two numbers: ");
+            scanf("%lf %lf", &num1, &num2);
+            result = num1 * num2;
+            printf("Result = %.2lf\n", result);
+            break;
+
+        case 4:
+            printf("Enter two numbers: ");
+            scanf("%lf %lf", &num1, &num2);
+            if (num2 != 0)
+                printf("Result = %.2lf\n", num1 / num2);
+            else
+                printf("Error! Division by zero is not allowed.\n");
+            break;
+
+        case 5:
+            printf("Enter base and exponent: ");
+            scanf("%lf %lf", &num1, &num2);
+            result = pow(num1, num2);
+            printf("Result = %.2lf\n", result);
+            break;
+
+        case 6:
+            printf("Enter a positive integer: ");
+            scanf("%d", &n);
+            if (n < 0)
+                printf("Factorial not defined for negative numbers.\n");
+            else
+                printf("Factorial = %lld\n", factorial(n));
+            break;
+
+        default:
+            printf("Invalid choice.\n");
+    }
+
+    return 0;
 }

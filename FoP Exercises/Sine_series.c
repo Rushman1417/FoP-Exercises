@@ -1,30 +1,26 @@
 #include <stdio.h>
-#include <math.h>
 
 int main() {
-    double x, terms, sum, term;
-    int i;
+    int n, i;
+    float x, term, sum = 0;
+    int sign = 1;
 
-    printf("Enter value of x (in radians): ");
-    scanf("%lf", &x);
+    printf("Enter the value of x (in radians): ");
+    scanf("%f", &x);
 
     printf("Enter number of terms: ");
-    scanf("%lf", &terms);
+    scanf("%d", &n);
 
-    // Initializations
-    sum = x;   // The first term of the series is 'x'
-    term = x;  // This keeps track of the current term value
+    term = x;
 
-    /* Loop starts from 1 because the 0th term (x) is already in 'sum'.
-       Each subsequent term (i) follows the pattern:
-       Next Term = Previous Term * (-x^2) / ((2*i) * (2*i + 1))
-    */
-    for (i = 1; i < terms; i++) {
-        term = term * (-1 * x * x) / ((2 * i) * (2 * i + 1));
-        sum = sum + term;
+    for (i = 1; i <= n; i++) {
+        sum = sum + sign * term;
+        term = term * x * x / ((2 * i) * (2 * i + 1));
+
+        sign = -sign;  // alternate sign
     }
 
-    printf("Sum of sine series = %lf\n", sum);
+    printf("Sum of sine series = %.4f", sum);
 
     return 0;
 }
